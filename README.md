@@ -37,5 +37,6 @@ Luego de este paso tenemos que crear un certificado DN
  - Con el texto que se genera, lo copiamos en un archivo de texto plano y le ponemos la extension .pem
  (el archivo pfx no lo cree...)
  Todos estos pasos estan detallados en este manual: https://www.afip.gob.ar/ws/WSASS/WSASS_manual.pdf
+ - El archivo pem, junto con el cert y el key los copiamos en la carpeta Afip_res que esta ubicada en node_module/@afipsdk/afip.js
  
 

@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const csrf = require('csurf');
+const RouterLogin = require('./routes/login');
+const RouterFacturas = require('./routes/facturas');
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 const MemoryStore = require('memorystore')(expressSession)
@@ -17,7 +19,7 @@ app.set('views', __dirname + '/views',);
 
 app.use(express.urlencoded({ extended: true }));
 
-const mongoURI = require('./config/monkoKEY');
+const mongoURI = require('./config/mongoKEY');
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, },).then(() => console.log("Connected !"),);
 
 app.use(cookieParser('random'));
@@ -44,6 +46,8 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.use('/', RouterLogin);
+app.use('/factura', RouterFacturas);
 app.use(require('./controller/routes.js'));
 
 app.listen(PORT, () => console.log("Server Started At " + PORT));
