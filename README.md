@@ -1,5 +1,6 @@
 # Coope_Fact
 Sistema para poder realizar facturas electronicas para las cooperadoras escolares de Argentina.
+La autenticación para entrar al sistema la hice utilizando 0auth de google y Mongo Atlas, los passwords para ambos los guardo en un archivo .env con las variables que pongo en el archivo de ejemplo llamado .env_example.
 
 Este repositorio funcionara como una guia paso a paso, para recordar que fue lo que fui haciendo mientras trataba de desarrollar esta aplicacion.
 
