@@ -7,7 +7,7 @@ Este repositorio funcionara como una guia paso a paso, para recordar que fue lo 
 El primer paso fue adherirme al servicio WSASS dentro de mi usuario de AFIP tal como explica este guia:
 https://www.afip.gob.ar/ws/WSASS/WSASS_como_adherirse.pdf
 
-###Lo siguiente 
+### Lo siguiente 
 fue generar la clave privada. Como estoy en linux no tuve que instalar openssl y los comandos que use fueron:
 
 ```
@@ -38,6 +38,11 @@ Luego de este paso tenemos que crear un certificado DN
  - Con el texto que se genera, lo copiamos en un archivo de texto plano y le ponemos la extension .pem
  (el archivo pfx no lo cree...)
  Todos estos pasos estan detallados en este manual: https://www.afip.gob.ar/ws/WSASS/WSASS_manual.pdf
- - El archivo pem, junto con el cert y el key los copiamos en la carpeta Afip_res que esta ubicada en node_module/@afipsdk/afip.js
+ - El contenido del archivo pem se lo copiamos dentro al archivo cert en la carpeta Afip_res que esta ubicada en node_module/@afipsdk/afip.js
+ - El contenido de mi MiClavePrivada.key se lo debemos copiar al archivo key que esta dentro de la carpeta Afip_res que esta ubicada en node_module/@afipsdk/afip.js
+
+### A tener en cuenta
+
+- El metodo getLastVoucher(punto de venta, tipo de comprobante) no funcionara hasta que no hagamos la primer factura con el WS
  
 

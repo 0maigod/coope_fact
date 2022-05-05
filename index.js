@@ -48,6 +48,5 @@ app.use(function (req, res, next) {
 
 app.use('/', RouterLogin);
 app.use('/factura', RouterFacturas);
-app.use(require('./controller/routes.js'));
 
 app.listen(PORT, () => console.log("Server Started At " + PORT));

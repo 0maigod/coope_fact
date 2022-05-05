@@ -54,7 +54,7 @@ controller.reg_save = (req, res) => {
 
 controller.signin_view = (req, res) => {
             if (req.isAuthenticated()) {
-                res.redirect('/profile');
+                res.redirect('/factura/profile');
             } else {
                 res.render("login", { csrfToken: req.csrfToken() });
             }
@@ -63,7 +63,7 @@ controller.signin_view = (req, res) => {
 controller.signin_save = (req, res, next) => {
     passport.authenticate('local', {
         failureRedirect: '/login',
-        successRedirect: '/profile',
+        successRedirect: '/factura/profile',
         failureFlash: true,
     })(req, res, next);
 }
