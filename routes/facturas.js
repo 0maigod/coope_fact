@@ -14,7 +14,10 @@ function checkAuth(req, res, next) {
     }
 }
 
-router.get('/ultima', facturaController.factura_view)
+router.get('/nueva', checkAuth, facturaController.factura_view)
+    .post('/nueva', checkAuth, facturaController.factura_save)
+    .get('/recibo', checkAuth, facturaController.factura_recibo)
+    .get('/talonario', checkAuth, facturaController.factura_view)
     .get('/profile', checkAuth, facturaController.profile);
 
 module.exports = router;

@@ -8,7 +8,6 @@ const config = {
     CUIT: process.env.CUIT
 }
 
-// const afip = new Afip({ CUIT: process.env.CUIT });
 const afip = new Afip(config);
             
 // controller.factura_view = async (req, res) => {
@@ -34,48 +33,61 @@ const afip = new Afip(config);
 //         res.render('ultima_factura', { users: 'Omero' });
 // };
 
-controller.factura_view = async (req, res) => {
-        
-    const tipoFactura = await afip.ElectronicBilling.getVoucherTypes()
+controller.factura_save = async (req, res) => {
+    const { email, 
+            tipoFactura, 
+            conceptoFactura,
+            tipoDocumento,
+            doc_numero,
+            importe,
+            detalleFactura 
+        } = req.body;
     const date = new Date(Date.now() - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
  
     let data = {
         'CantReg' 	: 1,  // Cantidad de comprobantes a registrar
         'PtoVta' 	: 1,  // Punto de venta
-        'CbteTipo' 	: 6,  // Tipo de comprobante (ver tipos disponibles) 
-        'Concepto' 	: 1,  // Concepto del Comprobante: (1)Productos, (2)Servicios, (3)Productos y Servicios
-        'DocTipo' 	: 99, // Tipo de documento del comprador (99 consumidor final, ver tipos disponibles)
-        'DocNro' 	: 0,  // Número de documento del comprador (0 consumidor final)
+        'CbteTipo' 	: parseInt(tipoFactura),  // Tipo de comprobante (ver tipos disponibles) 
+        'Concepto' 	: parseInt(conceptoFactura),  // Concepto del Comprobante: (1)Productos, (2)Servicios, (3)Productos y Servicios
+        'DocTipo' 	: parseInt(tipoDocumento), // Tipo de documento del comprador (99 consumidor final, ver tipos disponibles)
+        'DocNro' 	: parseInt(doc_numero),  // Número de documento del comprador (0 consumidor final)
         'CbteDesde' 	: 0,  // Número de comprobante o numero del primer comprobante en caso de ser mas de uno
         'CbteHasta' 	: 0,  // Número de comprobante o numero del último comprobante en caso de ser mas de uno
         'CbteFch' 	: parseInt(date.replace(/-/g, '')), // (Opcional) Fecha del comprobante (yyyymmdd) o fecha actual si es nulo
-        'ImpTotal' 	: 121, // Importe total del comprobante
+        'ImpTotal' 	: parseInt(importe), // Importe total del comprobante
         'ImpTotConc' 	: 0,   // Importe neto no gravado
-        'ImpNeto' 	: 100, // Importe neto gravado
+        'ImpNeto' 	: parseInt(importe), // Importe neto gravado
         'ImpOpEx' 	: 0,   // Importe exento de IVA
-        'ImpIVA' 	: 21,  //Importe total de IVA
+        'ImpIVA' 	: 0,  //Importe total de IVA
         'ImpTrib' 	: 0,   //Importe total de tributos
         'MonId' 	: 'PES', //Tipo de moneda usada en el comprobante (ver tipos disponibles)('PES' para pesos argentinos) 
         'MonCotiz' 	: 1,     // Cotización de la moneda usada (1 para pesos argentinos)  
-        'Iva' 		: [ // (Opcional) Alícuotas asociadas al comprobante
-            {
-                'Id' 		: 5, // Id del tipo de IVA (5 para 21%)(ver tipos disponibles) 
-                'BaseImp' 	: 100, // Base imponible
-                'Importe' 	: 21 // Importe 
-            }
-        ],
+        // 'Iva' 		: [ // (Opcional) Alícuotas asociadas al comprobante
+        //     {
+        //         'Id' 		: 3, // Id del tipo de IVA (3 para 0%)(ver tipos disponibles) 
+        //         'BaseImp' 	: 0, // Base imponible
+        //         'Importe' 	: 0 // Importe 
+        //     }
+        // ],
     };
 
     const respuesta = await afip.ElectronicBilling.createNextVoucher(data);
     console.log(`CAE asignado el comprobante ${respuesta['CAE']} y Fecha de vencimiento del CAE (yyyy-mm-dd) ${respuesta['CAEFchVto']}`)
-    res.render('ultima_factura');
+    res.render('recibo', { csrfToken: req.csrfToken() });
 };
 
-controller.factura_save = (req, res, next) => {
-    res.send('Vamos a crear una factura en breve!!')
+controller.factura_view = (req, res, next) => {
+    console.log("csruf_view: " + req.csrfToken());
+    res.render('nueva_factura', { csrfToken: req.csrfToken() });
+}
+
+controller.factura_recibo = (req, res, next) => {
+    console.log("csruf_recibo: " + req.csrfToken());
+    res.render('recibo', { csrfToken: req.csrfToken() });
 }
 
 controller.profile = (req, res) => {
+    console.log("csruf: " + req.csrfToken());
     res.render('profile', { username: req.user.username, verified : req.user.isVerified });
 };
 

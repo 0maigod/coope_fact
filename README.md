@@ -40,6 +40,7 @@ Luego de este paso tenemos que crear un certificado DN
  Todos estos pasos estan detallados en este manual: https://www.afip.gob.ar/ws/WSASS/WSASS_manual.pdf
  - El contenido del archivo pem se lo copiamos dentro al archivo cert en la carpeta Afip_res que esta ubicada en node_module/@afipsdk/afip.js
  - El contenido de mi MiClavePrivada.key se lo debemos copiar al archivo key que esta dentro de la carpeta Afip_res que esta ubicada en node_module/@afipsdk/afip.js
+ - Estos dos ultimos pasos los podemos dejar asi o directamente podemos copiar el contenido de cada uno de los archivos en dos variables (AFIP_CERT y AFIP_PRIVATE_KEY) que estaran alojadas en el archivo .env (de hecho es conveniente hacerlo de esta manera ya que modifique la manera en que se crea la instancia de afip dentro de cada consulta)
 
 ### A tener en cuenta
 

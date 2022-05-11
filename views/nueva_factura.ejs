@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font  -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <title>Pedido de factura</title>
+</head>
+<style>
+  body {
+    font-family: 'Recursive', sans-serif;
+    font-size: larger;
+  }
+</style>
+
+<body>
+
+  <!-- navbar  -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Pedido de Facturas</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- navbar end  -->
+
+  <div class="container py-3">
+    <h1>Módulo para la creacion de Facturas</h1>
+    <h3>Complete los datos.</h3>
+  </div>
+  <br>
+  <div class="container">
+    <form action="nueva" , method="POST", name="formulario">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <div class="row mb-4">
+        <div class="col">
+          <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+        <select class="form-control" id="tipoDocumento" name="tipoDocumento">
+          <option selected>Tipo de Documento...</option>
+            <option value="96">DNI</option>
+            <option value="80">CUIT</option>
+            <option value="86">CUIL</option>
+            <option value="87">Cédula</option>
+            <option value="89">LE</option>
+            <option value="90">LC</option>
+            <option value="91">CI Extranjera</option>
+            <option value="94">Pasaporte</option>
+            <option value="99">Doc. (Otro)</option>
+        </select>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <input class="form-control" type="number" name="doc_numero" id="doc_numero" placeholder="Nro. de documento"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+        <select class="form-control" id="nivel" name="nivel" onchange="cambia_division()">
+          <option value="0" selected>Elija Nivel Educativo</option>
+            <option value="1">Inicial</option>
+            <option value="2">Primaria</option>
+            <option value="3">Secundaria</option>
+            <option value="4">PEP</option>
+            <option value="5">IES</option>
+        </select>
+        </div>
+        <div class="col">
+          <select class="form-control" id="division" name="division">
+            <option value="0" selected>Sala, grado o división</option>
+              <option value="1">Inicial</option>
+              <option value="2">Primaria</option>
+              <option value="3">Secundaria</option>
+              <option value="4">PEP</option>
+              <option value="5">IES</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <select class="form-control" id="tipoFactura" name="tipoFactura">
+            <option selected>Tipo de Factura...</option>
+            <option value="11">Factura C</option>
+            <option value="15">Recibo C</option>
+            <option value="1">Factura A</option>
+            <option value="4">Recibo A</option>
+            <option value="6">Factura B</option>
+            <option value="9">Recibo B</option>
+          </select>
+        </div>
+        <div class="col">
+            <select class="form-control" id="conceptoFactura" name="conceptoFactura">
+              <option selected>Concepto de la Factura...</option>
+              <option value="1">Productos</option>
+              <option value="2">Servicios</option>
+              <option value="3">Productos y Servicios</option>
+            </select>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <input class="form-control" type="number" name="importe" id="importe" placeholder="Importe"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="detalleFactura">Detalle de la factura</label>
+        <textarea type="text" class="form-control" id="detalleFactura" name="detalleFactura" rows="3"></textarea>
+      </div>
+      <br>
+      <input
+              type="submit"
+              class="btn btn-lg btn-block btn-outline-primary"
+              value="Facturar!"
+            />
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous">
+  </script>
+  <script>
+    let divisiones_1=new Array("...","Sala Rosa","Sala Verde","Sala Azul");
+    let divisiones_2=new Array("...","1ro A","2do B","7mo C","5to A","6to B");
+    let divisiones_3=new Array("...","1ro 1ra","2do 5ta","4to 6ta","5to 3ra");
+    let divisiones_4=new Array("...","Primero","Segundo","Tercero");
+    let divisiones_5=new Array("...","Primero","Segundo","Tercero");
+
+    let todasLasDivisiones = [
+      [],
+      divisiones_1,
+      divisiones_2,
+      divisiones_3,
+      divisiones_4,
+      divisiones_5,
+    ];
+
+    function cambia_division(){ 
+          let nivel 
+          nivel = document.formulario.nivel[document.formulario.nivel.selectedIndex].value 
+          if (nivel != 0) { 
+              mis_divisiones=todasLasDivisiones[nivel]
+              num_divisiones = mis_divisiones.length 
+              document.formulario.division.length = num_divisiones 
+
+              for(i=0;i<num_divisiones;i++){ 
+                document.formulario.division.options[i].value=mis_divisiones[i] 
+                document.formulario.division.options[i].text=mis_divisiones[i] 
+              }	
+          }else{ 
+              document.formulario.division.length = 1 
+              document.formulario.division.options[0].value = "-" 
+              document.formulario.division.options[0].text = "-" 
+          } 
+          document.formulario.division.options[0].selected = true 
+      }
+  </script>
+
+</body>
+
+</html>

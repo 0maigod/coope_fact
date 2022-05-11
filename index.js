@@ -23,6 +23,7 @@ const mongoURI = require('./config/mongoKEY');
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, },).then(() => console.log("Connected !"),);
 
 app.use(cookieParser('random'));
+app.use(csrf({ cookie: true }));
 
 app.use(expressSession({
     secret: "random",
@@ -33,7 +34,6 @@ app.use(expressSession({
     store: new MemoryStore(),
 }));
 
-app.use(csrf());
 app.use(passport.initialize());
 app.use(passport.session());
 
