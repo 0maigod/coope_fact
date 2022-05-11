@@ -1,10 +1,15 @@
 require('dotenv').config()
 const Afip = require('@afipsdk/afip.js');
-const afip = new Afip({ CUIT: process.env.CUIT });
 
 const controller = {};
+const config = {
+    privateKeyContents: process.env.AFIP_PRIVATE_KEY,
+    certContents: process.env.AFIP_CERT,
+    CUIT: process.env.CUIT
+}
 
-
+// const afip = new Afip({ CUIT: process.env.CUIT });
+const afip = new Afip(config);
             
 // controller.factura_view = async (req, res) => {
 //     // const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(1,1,6); //Devuelve la información del comprobante 1 para el punto de venta 1 y el tipo de comprobante 6 (Factura B)
