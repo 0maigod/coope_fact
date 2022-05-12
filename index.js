@@ -8,6 +8,7 @@ const expressSession = require('express-session');
 const MemoryStore = require('memorystore')(expressSession)
 const passport = require('passport');
 const flash = require('connect-flash');
+const path = require('path');
 
 require('dotenv').config()
 const PORT = process.env.PORT || 5000
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views',);
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const mongoURI = require('./config/mongoKEY');
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, },).then(() => console.log("Connected !"),);

@@ -1,8 +1,10 @@
 -   COSAS A ARREGLAR O A AVERIGUAR
 
-- si hago refresh en la pagina de la boleta, que no me genere una nueva factura.
+
 - customizar la pagina de la boleta y agregarle una forma de descargar pdf.
 - hacer esa pagina dinamica agregandole la data de la operacion.
 - generar una pagina para ver comprobantes anteriores.
-- ver si es necesario poder hacer facturas A o B y no solamente C.
 - subirlo a heroku y ver como funciona.
+- pasar el key y el cert por parametros en el .env
+- sacar loguearse con google del inicio
+- ver el tratamiento de errores (que no cuelgue y me dirija a otra pagina)

@@ -3,8 +3,8 @@ const Afip = require('@afipsdk/afip.js');
 
 const controller = {};
 const config = {
-    privateKeyContents: process.env.AFIP_PRIVATE_KEY,
-    certContents: process.env.AFIP_CERT,
+    // privateKeyContents: process.env.AFIP_PRIVATE_KEY,
+    // certContents: process.env.AFIP_CERT,
     CUIT: process.env.CUIT
 }
 
@@ -36,24 +36,31 @@ const afip = new Afip(config);
 controller.factura_save = async (req, res) => {
     const { email, 
             tipoFactura, 
-            conceptoFactura,
+            // conceptoFactura,
             tipoDocumento,
             doc_numero,
-            importe,
-            detalleFactura 
+            importe
+            // detalleFactura 
         } = req.body;
-    const date = new Date(Date.now() - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
- 
+    // const date = new Date(Date.now() - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+    const hoy = Date.now()
+    const ayer = hoy - 86400000
+    const date = new Date(hoy - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+    const dateAyer = new Date(ayer - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+
     let data = {
         'CantReg' 	: 1,  // Cantidad de comprobantes a registrar
         'PtoVta' 	: 1,  // Punto de venta
         'CbteTipo' 	: parseInt(tipoFactura),  // Tipo de comprobante (ver tipos disponibles) 
-        'Concepto' 	: parseInt(conceptoFactura),  // Concepto del Comprobante: (1)Productos, (2)Servicios, (3)Productos y Servicios
+        'Concepto' 	: 2,  // Concepto del Comprobante: (1)Productos, (2)Servicios, (3)Productos y Servicios
         'DocTipo' 	: parseInt(tipoDocumento), // Tipo de documento del comprador (99 consumidor final, ver tipos disponibles)
         'DocNro' 	: parseInt(doc_numero),  // Número de documento del comprador (0 consumidor final)
         'CbteDesde' 	: 0,  // Número de comprobante o numero del primer comprobante en caso de ser mas de uno
         'CbteHasta' 	: 0,  // Número de comprobante o numero del último comprobante en caso de ser mas de uno
         'CbteFch' 	: parseInt(date.replace(/-/g, '')), // (Opcional) Fecha del comprobante (yyyymmdd) o fecha actual si es nulo
+        'FchServDesde' 	: parseInt(dateAyer.replace(/-/g, '')), // (Opcional) Fecha del comprobante (yyyymmdd) o fecha actual si es nulo
+        'FchServHasta' 	: parseInt(date.replace(/-/g, '')), // (Opcional) Fecha del comprobante (yyyymmdd) o fecha actual si es nulo
+        'FchVtoPago' 	: parseInt(date.replace(/-/g, '')), // (Opcional) Fecha del comprobante (yyyymmdd) o fecha actual si es nulo
         'ImpTotal' 	: parseInt(importe), // Importe total del comprobante
         'ImpTotConc' 	: 0,   // Importe neto no gravado
         'ImpNeto' 	: parseInt(importe), // Importe neto gravado
@@ -72,18 +79,20 @@ controller.factura_save = async (req, res) => {
     };
 
     const respuesta = await afip.ElectronicBilling.createNextVoucher(data);
-    console.log(`CAE asignado el comprobante ${respuesta['CAE']} y Fecha de vencimiento del CAE (yyyy-mm-dd) ${respuesta['CAEFchVto']}`)
-    res.render('recibo', { csrfToken: req.csrfToken() });
+    // console.log(`CAE asignado el comprobante ${respuesta['CAE']} y Fecha de vencimiento del CAE (yyyy-mm-dd) ${respuesta['CAEFchVto']}`)
+    req.session.context = Object.assign(req.body , respuesta, {fecha:date});
+    res.redirect('recibo', 200, { csrfToken: req.csrfToken() });
+    
 };
 
 controller.factura_view = (req, res, next) => {
-    console.log("csruf_view: " + req.csrfToken());
     res.render('nueva_factura', { csrfToken: req.csrfToken() });
 }
 
 controller.factura_recibo = (req, res, next) => {
-    console.log("csruf_recibo: " + req.csrfToken());
-    res.render('recibo', { csrfToken: req.csrfToken() });
+    let context = req.session.context;
+    console.log(JSON.stringify(context));
+    res.render('recibo', { csrfToken: req.csrfToken(), context: context });
 }
 
 controller.profile = (req, res) => {

@@ -108,18 +108,18 @@
             <option selected>Tipo de Factura...</option>
             <option value="11">Factura C</option>
             <option value="15">Recibo C</option>
-            <option value="1">Factura A</option>
-            <option value="4">Recibo A</option>
-            <option value="6">Factura B</option>
-            <option value="9">Recibo B</option>
+            <option value="1" disabled>Factura A</option>
+            <option value="4" disabled>Recibo A</option>
+            <option value="6" disabled>Factura B</option>
+            <option value="9" disabled>Recibo B</option>
           </select>
         </div>
         <div class="col">
             <select class="form-control" id="conceptoFactura" name="conceptoFactura">
               <option selected>Concepto de la Factura...</option>
-              <option value="1">Productos</option>
               <option value="2">Servicios</option>
-              <option value="3">Productos y Servicios</option>
+              <option value="1" disabled>Productos</option>
+              <option value="3" disabled>Productos y Servicios</option>
             </select>
         </div>
       </div>
@@ -149,11 +149,11 @@
     crossorigin="anonymous">
   </script>
   <script>
-    let divisiones_1=new Array("...","Sala Rosa","Sala Verde","Sala Azul");
-    let divisiones_2=new Array("...","1ro A","2do B","7mo C","5to A","6to B");
-    let divisiones_3=new Array("...","1ro 1ra","2do 5ta","4to 6ta","5to 3ra");
-    let divisiones_4=new Array("...","Primero","Segundo","Tercero");
-    let divisiones_5=new Array("...","Primero","Segundo","Tercero");
+    let divisiones_1=new Array("...","SALA 3 TM","SALA 4 TM","SALA 5 TM","SALA 3 TT","SALA 4 TT","SALA 5 TT");
+    let divisiones_2=new Array("...","1ro A TM","1ro B TM","2do A TM","2do B TM","3ro A TM","3ro B TM","4to A TM","4to B TM","5to A TM","5to B TM","6to A TM","6to B TM","7mo A TM","7mo B TM","1ro C TT","1ro D TT","2do C TT","2do D TT","3ro C TT","3ro D TT","4to C TT","4to D TT","5to C TT","5to D TT","6to C TT","6to D TT","7mo C TT","7mo D TT");
+    let divisiones_3=new Array("...","1ro 1ra TM","1ro 6ta TM","1ro 7ma TM","2do 1ra TM","2do 6ta TM","2ro 7ma TM","3ro 1ra TM","3ro 2da TM","3ro 3ra TM","3ro 7ma TM","4to 1ra TM","4to 2da TM","4to 5ta TM","4to 7ma TM","5to 1ra TM","5to 2da TM","5to 5ta TM","5to 7ma TM","1ro 3ra TT","1ro 5ta TT","1ro 8va TT","2do 3ra TT","2do 4ta TT","2do 5ta TT","3ro 4ta TT","3ro 5ta TT","3ro 6ta TT","4to 3ra TT","4to 4ta TT","4to 6ta TT","5to 3ra TT","5to 4ta TT","5to 6ta TT");
+    let divisiones_4=new Array("...","Ciclo Básico","Ciclo Profesional");
+    let divisiones_5=new Array("...","Ciclo Básico","Ciclo Profesional");
 
     let todasLasDivisiones = [
       [],
