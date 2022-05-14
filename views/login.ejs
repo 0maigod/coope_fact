@@ -17,7 +17,7 @@
       integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
       crossorigin="anonymous"
     />
-    <title>Authentications</title>
+    <title>Plataforma de Facturas.</title>
     <style>
       body {
         font-family: "Recursive", sans-serif;
@@ -26,7 +26,7 @@
 
       .customborder {
         border-radius: 2%;
-        border: 2px solid #e95420;
+        border: 2px solid #2077e9;
       }
     </style>
   </head>
@@ -35,7 +35,7 @@
     <!-- navbar  -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Authentications</a>
+        <a class="navbar-brand" href="#">Ingreso a la plataforma.</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -53,10 +53,10 @@
               <a class="nav-link" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">Login</a>
+              <a class="nav-link active" href="">Entrar</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/signup">Signup</a>
+              <a class="nav-link" href="/signup">Inscribirse</a>
             </li>
           </ul>
         </div>
@@ -65,7 +65,7 @@
     <!-- navbar end  -->
 
     <div class="container">
-      <h1 class="text-center p-3">Login Here</h1>
+      <h1 class="text-center p-3">Ingrese sus datos.</h1>
       <div
         style="margin: 0 auto"
         class="col-12 col-md-6 col-lg-5 p-5 customborder"
@@ -100,7 +100,7 @@
         <form action="/login" , method="POST">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div class="mb-3">
-            <label for="username">Enter Your Email</label>
+            <label for="username">Ingrese su Email</label>
             <input
               type="email"
               class="form-control form-control-lg"
@@ -111,7 +111,7 @@
             />
           </div>
           <div class="mb-3">
-            <label for="password">Enter Your Password</label>
+            <label for="password">Ingrese su Password</label>
             <input
               type="password"
               class="form-control form-control-lg"
@@ -125,17 +125,14 @@
             <input
               type="submit"
               class="btn btn-lg btn-block btn-outline-primary"
-              value="Login"
+              value="Ingrese"
             />
-            <a class="btn btn-lg btn-success" href="/google"
-              >Continue With Google</a
-            >
           </div>
-          <p>New Here ? <a class="card-link" href="/signup">Register Now</a></p>
+          <p>¿Es nuevo? <a class="card-link" href="/signup">Registrese</a></p>
           <!-- added a new button for redirecting to forgot password page  -->
           <p>
             <a class="card-link" href="/user/forgot-password"
-              >Forgot Password</a
+              >¿Olvido su Password?</a
             >
           </p>
         </form>

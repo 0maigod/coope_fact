@@ -1,10 +1,7 @@
 -   COSAS A ARREGLAR O A AVERIGUAR
 
-
-- customizar la pagina de la boleta y agregarle una forma de descargar pdf.
-- hacer esa pagina dinamica agregandole la data de la operacion.
 - generar una pagina para ver comprobantes anteriores.
 - subirlo a heroku y ver como funciona.
 - pasar el key y el cert por parametros en el .env
-- sacar loguearse con google del inicio
 - ver el tratamiento de errores (que no cuelgue y me dirija a otra pagina)
+- hacer una pagina de registro
