@@ -3,8 +3,8 @@ const Afip = require('@afipsdk/afip.js');
 
 const controller = {};
 const config = {
-    // privateKeyContents: process.env.AFIP_PRIVATE_KEY,
-    // certContents: process.env.AFIP_CERT,
+    privateKeyContents: process.env.AFIP_PRIVATE_KEY,
+    certContents: process.env.AFIP_CERT,
     CUIT: process.env.CUIT
 }
 
@@ -86,7 +86,7 @@ controller.factura_save = async (req, res) => {
 };
 
 controller.factura_view = (req, res, next) => {
-    res.render('nueva_factura', { csrfToken: req.csrfToken() });
+    res.render('nueva_factura', { csrfToken: req.csrfToken(), verified : req.user.isVerified });
 }
 
 controller.factura_recibo = (req, res, next) => {

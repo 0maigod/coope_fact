@@ -8,7 +8,7 @@ const controller = {};
 
 
 controller.reg_save = (req, res) => {
-    // get all the values 
+    // get all the values
     const { email, username, password, confirmpassword } = req.body;
     // check if the are empty 
     if (!email || !username || !password || !confirmpassword) {
