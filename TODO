@@ -1,7 +1,7 @@
 -   COSAS A ARREGLAR O A AVERIGUAR
 
 - generar una pagina para ver comprobantes anteriores.
-- subirlo a heroku y ver como funciona.
-- pasar el key y el cert por parametros en el .env (Hecho, ver si funciona en Heroku)
+- pasar el key y el cert por parametros en el .env (No funciona en Heroku)
 - ver el tratamiento de errores (que no cuelgue y me dirija a otra pagina)
 - mandarle mail al administrador.
+- funcion para convertir el formato de la fecha para agregarla en las facturas, hacerlo en utils/conversor.js

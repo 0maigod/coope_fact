@@ -73,7 +73,43 @@
           <%= username %>
         </h3>
         <a class="btn btn-primary btn-lg" href="talonario" role="button">Nueva factura</a>
+        <br />
+        <br />
       </div>
+      <form action="fac_anterior" , method="POST", name="formularioFactura">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="row mb-4">
+          <div class="col">
+            <input
+              type="submit"
+              class="btn btn-lg btn-block btn-outline-primary"
+              value="Facturas anteriores!"
+            />
+            <!-- <a class="btn btn-primary btn-lg" href="anteriores" role="button">Facturas anteriores</a> -->
+          </div>
+          <div class="col">
+            <input type="numeroFactura" class="form-control" id="numeroFactura" name="numeroFactura" placeholder="Nro Factura">
+            <!-- <a class="btn btn-primary btn-lg" href="anteriores" role="button">Facturas anteriores</a> -->
+          </div>
+        </div>
+      </form>
+      <form action="rec_anterior" , method="POST", name="formularioRecibo">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="row mb-4">
+          <div class="col">
+            <input
+              type="submit"
+              class="btn btn-lg btn-block btn-outline-primary"
+              value="Recibos anteriores!"
+            />
+            <!-- <a class="btn btn-primary btn-lg" href="anteriores" role="button">Facturas anteriores</a> -->
+          </div>
+          <div class="col">
+            <input type="numeroRecibo" class="form-control" id="numeroRecibo" name="numeroRecibo" placeholder="Nro Recibo">
+            <!-- <a class="btn btn-primary btn-lg" href="anteriores" role="button">Facturas anteriores</a> -->
+          </div>
+        </div>
+      </form>
     </div>
     
   </div>

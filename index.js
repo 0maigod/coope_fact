@@ -52,12 +52,15 @@ app.use(function (req, res, next) {
 app.use('/', RouterLogin);
 app.use('/factura', RouterFacturas);
 
+// const ceritificado = require('./config/private_key');
+// console.log('nuevito..=================' + ceritificado)
+
 // fs.readFile(path.resolve(__dirname, 'node_modules/@afipsdk/afip.js/src/Afip_res/key'), 'utf8', (err, data) => {
 //     if (err) {
 //       console.error(err);
 //       return;
 //     }
-//     console.log(data);
+//     console.log('original =================' + data);
 //   });
 
 app.listen(PORT, () => console.log("Server Started At " + PORT));
