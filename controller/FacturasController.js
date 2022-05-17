@@ -3,8 +3,9 @@ const Afip = require('@afipsdk/afip.js');
 
 const controller = {};
 const config = {
-    privateKeyContents: process.env.AFIP_PRIVATE_KEY,
-    certContents: process.env.AFIP_CERT,
+    key: 'private_key.js', 
+    cert: 'cert.js',
+    res_folder: './config',
     CUIT: process.env.CUIT
 }
 

@@ -9,6 +9,7 @@ const MemoryStore = require('memorystore')(expressSession)
 const passport = require('passport');
 const flash = require('connect-flash');
 const path = require('path');
+const fs = require('fs');
 
 require('dotenv').config()
 const PORT = process.env.PORT || 5000
@@ -51,5 +52,12 @@ app.use(function (req, res, next) {
 app.use('/', RouterLogin);
 app.use('/factura', RouterFacturas);
 
+// fs.readFile(path.resolve(__dirname, 'node_modules/@afipsdk/afip.js/src/Afip_res/key'), 'utf8', (err, data) => {
+//     if (err) {
+//       console.error(err);
+//       return;
+//     }
+//     console.log(data);
+//   });
 
 app.listen(PORT, () => console.log("Server Started At " + PORT));
