@@ -51,5 +51,5 @@ app.use(function (req, res, next) {
 app.use('/', RouterLogin);
 app.use('/factura', RouterFacturas);
 
-console.log(process.env.AFIP_CERT)
+
 app.listen(PORT, () => console.log("Server Started At " + PORT));
