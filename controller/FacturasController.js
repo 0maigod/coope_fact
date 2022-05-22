@@ -62,7 +62,9 @@ controller.factura_save = async (req, res) => {
 
 controller.factura_recibo = (req, res, next) => {
     let context = req.session.context;
-    console.log(JSON.stringify(context));
+    context.tipoDocumento = tipoDoc(context.tipoDocumento)
+    context.tipoFactura = tipoRecibo(context.tipoFactura)
+    // console.log("el recibo sale de aca "+JSON.stringify(context));
     res.render('recibo', { csrfToken: req.csrfToken(), context: context });
 }
 
