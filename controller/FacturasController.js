@@ -11,29 +11,6 @@ const config = {
 }
 
 const afip = new Afip(config);
-            
-// controller.factura_view = async (req, res) => {
-//     // const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(1,1,6); //Devuelve la información del comprobante 1 para el punto de venta 1 y el tipo de comprobante 6 (Factura B)
-//     const voucherInfo = await afip.ElectronicBilling.getLastVoucher(1,6); 
-//     // tipo de comprobante 1 (Factura A)
-//     // tipo de comprobante 11 (Factura C)
-//     // const voucherInfo = await afip.ElectronicBilling.getSalesPoints()
-//     // const voucherInfo = await afip.ElectronicBilling.createVoucher(data)
-//     // const voucherInfo = await afip.ElectronicBilling.getVoucherTypes(); //Devuelve la información de los tipos de comprobante
-//     let users = []
-//         if(voucherInfo === null){
-//             console.log('El comprobante no existe');
-//         }
-//         else{
-//             console.log('Esta es la información del comprobante:');
-//             // console.log(voucherInfo[0].Id);
-//             // console.log('Created bill', JSON.stringify(voucherInfo, null, 4));
-//             console.log(voucherInfo);
-//             // users = voucherInfo
-//         }
-//         // res.render('ultima_factura', { username: req.user.username, verified : req.user.isVerified, users: users });
-//         res.render('ultima_factura', { users: 'Omero' });
-// };
 
 controller.factura_save = async (req, res) => {
     const { tipoFactura,

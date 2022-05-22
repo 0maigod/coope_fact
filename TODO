@@ -3,5 +3,7 @@
 - generar una pagina para ver comprobantes anteriores.
 - pasar el key y el cert por parametros en el .env (No funciona en Heroku)
 - ver el tratamiento de errores (que no cuelgue y me dirija a otra pagina)
+- si el cuit no existe crashea la aplicacion
 - mandarle mail al administrador.
+- cuando crea la factura, si es un recibo, de todas maneras pone factura.
 - funcion para convertir el formato de la fecha para agregarla en las facturas, hacerlo en utils/conversor.js
