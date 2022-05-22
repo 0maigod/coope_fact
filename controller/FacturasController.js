@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { tipoDoc, tipoRecibo } = require('../utils/conversor')
+const { tipoDoc, tipoRecibo, fechaConv, fechaConvB } = require('../utils/conversor')
 const Afip = require('@afipsdk/afip.js');
 
 const controller = {};
@@ -64,7 +64,8 @@ controller.factura_recibo = (req, res, next) => {
     let context = req.session.context;
     context.tipoDocumento = tipoDoc(context.tipoDocumento)
     context.tipoFactura = tipoRecibo(context.tipoFactura)
-    // console.log("el recibo sale de aca "+JSON.stringify(context));
+    context.fecha = fechaConvB(context.fecha)
+    // console.log("Factura recien Hecha "+JSON.stringify(context));
     res.render('recibo', { csrfToken: req.csrfToken(), context: context });
 }
 
@@ -76,14 +77,16 @@ controller.factura_anteriores = async (req, res, next) => {
     const { numeroFactura } = req.body;
     const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroFactura,1,11); //Devuelve la información del comprobante "numeroFactura" para el punto de venta 1 y el tipo de comprobante 11 (Factura C)
     voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
+    voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
     voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
     req.session.context = Object.assign(voucherInfo);
+    // console.log("Factura Pedida "+JSON.stringify(voucherInfo));
     res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
 }
 
 controller.fac_pedidofactura = (req, res, next) => {
     let context = req.session.context;
-    console.log(JSON.stringify(context));
+    // console.log(JSON.stringify(context));
     res.render('pedido_recibo', { csrfToken: req.csrfToken(), context: context });
 }
 
@@ -91,6 +94,7 @@ controller.recibo_anteriores = async (req, res, next) => {
     const { numeroRecibo } = req.body;
     const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroRecibo,1,15); //Devuelve la información del comprobante "numeroRecibo" para el punto de venta 1 y el tipo de comprobante 15 (Recibo C)
     voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
+    voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
     voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
     req.session.context = Object.assign(voucherInfo);
     res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });

@@ -1,0 +1,11 @@
+{
+    "apps" : [{
+      "name"        : "CoopeF",
+      "script"      : "npm run test",
+      "instances": 2,
+      "env": {
+        "PORT": "5001"
+      }
+    }
+    ]
+  }
