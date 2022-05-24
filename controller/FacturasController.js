@@ -18,7 +18,7 @@ controller.factura_save = async (req, res) => {
             doc_numero,
             importe
         } = req.body;
-    // const date = new Date(Date.now() - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
+        
     const hoy = Date.now()
     const ayer = hoy - 86400000
     const date = new Date(hoy - ((new Date()).getTimezoneOffset() * 60000)).toISOString().split('T')[0];
@@ -53,11 +53,17 @@ controller.factura_save = async (req, res) => {
         //     }
         // ],
     };
-
-    const respuesta = await afip.ElectronicBilling.createNextVoucher(data);
+    try {
+        const respuesta = await afip.ElectronicBilling.createNextVoucher(data);
+        req.session.context = Object.assign(req.body , respuesta, {fecha:date});
+        res.redirect('recibo', 200, { csrfToken: req.csrfToken() });
+      }
+      catch(e) {
+        // console.error(e.message);
+        // req.flash('error_messages', "Error al completar la operacion!");
+        res.render("nueva_factura", { error: e.message, csrfToken: req.csrfToken() })
+    }
     // console.log(`CAE asignado el comprobante ${respuesta['CAE']} y Fecha de vencimiento del CAE (yyyy-mm-dd) ${respuesta['CAEFchVto']}`)
-    req.session.context = Object.assign(req.body , respuesta, {fecha:date});
-    res.redirect('recibo', 200, { csrfToken: req.csrfToken() });
 };
 
 controller.factura_recibo = (req, res, next) => {
@@ -75,13 +81,20 @@ controller.factura_view = (req, res, next) => {
 
 controller.factura_anteriores = async (req, res, next) => {
     const { numeroFactura } = req.body;
-    const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroFactura,1,11); //Devuelve la información del comprobante "numeroFactura" para el punto de venta 1 y el tipo de comprobante 11 (Factura C)
-    voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
-    voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
-    voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
-    req.session.context = Object.assign(voucherInfo);
-    // console.log("Factura Pedida "+JSON.stringify(voucherInfo));
-    res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
+    try {
+        const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroFactura,1,11); //Devuelve la información del comprobante "numeroFactura" para el punto de venta 1 y el tipo de comprobante 11 (Factura C)
+        voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
+        voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
+        voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
+        req.session.context = Object.assign(voucherInfo);
+        // console.log("Factura Pedida "+JSON.stringify(voucherInfo));
+        res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
+      }
+      catch(e) {
+        // console.error(e.message);
+        // req.flash('error_messages', "Error al completar la operacion!");
+        res.render("profile", { error: `No existe el comprobante solicitado`, csrfToken: req.csrfToken(), username: req.user.username, verified : req.user.isVerified })
+    }
 }
 
 controller.fac_pedidofactura = (req, res, next) => {
@@ -92,16 +105,24 @@ controller.fac_pedidofactura = (req, res, next) => {
 
 controller.recibo_anteriores = async (req, res, next) => {
     const { numeroRecibo } = req.body;
-    const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroRecibo,1,15); //Devuelve la información del comprobante "numeroRecibo" para el punto de venta 1 y el tipo de comprobante 15 (Recibo C)
-    voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
-    voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
-    voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
-    req.session.context = Object.assign(voucherInfo);
-    res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
+    try {
+        const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroRecibo,1,15); //Devuelve la información del comprobante "numeroRecibo" para el punto de venta 1 y el tipo de comprobante 15 (Recibo C)
+
+        voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
+        voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
+        voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
+        req.session.context = Object.assign(voucherInfo);
+        res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
+      }
+      catch(e) {
+        // console.error(e.message);
+        // req.flash('error_messages', "Error al completar la operacion!");
+        res.render("profile", { error: `No existe el comprobante solicitado`, csrfToken: req.csrfToken(), username: req.user.username, verified : req.user.isVerified })
+    }
 }
 
 controller.profile = (req, res) => {
-    console.log("csruf: " + req.csrfToken());
+    // console.log("csruf: " + req.csrfToken());
     res.render('profile', { csrfToken: req.csrfToken(), username: req.user.username, verified : req.user.isVerified });
 };
 

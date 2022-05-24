@@ -44,17 +44,25 @@
     </div>
   </nav>
   <!-- navbar end  -->
-  <% if(!verified){ %>
-    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-      <strong>¡ATENCION!</strong> Su identidad no esta chequeada, usted no puede generar nuevas facturas. </br>Contacte al administrador.
-      <a href="#">Re-enviar Email de verificación</a>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-    </div>
-  <%} else { %>
   <div class="container py-3">
     <h1>Módulo para la creación de Facturas</h1>
     <h3>Complete los datos.</h3>
+    <% if( error !="" ){ %>
+      <div
+        class="alert alert-danger alert-dismissible fade show"
+        role="alert"
+      >
+        <strong> Error </strong>
+        <%= error %>.
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <% } %>
   </div>
   <br>
   <div class="container">
@@ -157,7 +165,7 @@
               value="Facturar!"
             />
     </form>
-    <% } %>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
