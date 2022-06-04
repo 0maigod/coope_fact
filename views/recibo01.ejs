@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/fontawesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Recibo de Pago</title>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="container" id="recibo">
+          <div class="row">
+              <div class="col-md-6 col-md-offset-3 body-main">
+                  <div class="col-md-12">
+                     <div class="row">
+                          <div class="col-md-4">
+                              <img class="img" alt="logo coope" src="../img/coope_logo.png" />
+                          </div>
+                          <div class="col-md-8">
+                              <h4 style="color: #292828;"><strong>Cooperadora Mariano Acosta</strong></h4>
+                              <p class="text-muted"><strong>CUIT: 30-67599224-6</strong></br><strong>Urquiza 277, CABA</strong></br><strong>transferenciascuotascoope@gmail.com</strong></br><strong>cooperadoramarianoacosta@gmail.com</strong></p>
+                          </div>
+                      </div>
+                      <br/>
+                      <br/>
+                      <br/>
+                      <div class="row">
+                          <div class="col-md-6 text-center">
+                              <h4>Nro de <%= context.tipoFactura %></h4>
+                              <h4><%= context.voucherNumber %></h4>
+                          </div>
+                          <div class="col-md-6 text-center">
+                              <h4>Nro de CAE</h4>
+                              <h4><%= context.CAE %></h4>
+                          </div>
+                      </div>
+                      <br />
+                      <br />
+                      <div>
+                          <table class="table">
+                              <tbody>
+                                  <tr>
+                                      <td class="col-md-5 border-0 img2"><h6>Nombre del socio: </h6></td>
+                                      <td class="col-md-7 border-0 img2"><h6><%= context.nombre %> <%= context.apellido %></h6></td>                                    
+                                  </tr>
+                                  <tr>
+                                      <td class="col-md-5 border-0 img2"><h6>Documento: </h6></td>
+                                      <td class="col-md-7 border-0 img2"><h6><%= context.tipoDocumento %> <%= context.doc_numero %></h6></td>                                    
+                                  </tr>
+                                  <tr>
+                                      <td class="col-md-5 border-0 img2"><h6>Email Socio: </h6></td>
+                                      <td class="col-md-7 border-0 img2"><h6><%= context.email %></h6></td>                                    
+                                  </tr>
+                                  <tr>
+                                      <td class="col-md-5 border-0 img2"><h6>Año, Grado o División: </h6></td>
+                                      <td class="col-md-7 border-0 img2"><h6><%= context.division %></h6></td>
+                                  </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <div>
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th><h4>Descripción</h4></th>
+                                      <th><h4>Monto</h4></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td class="col-md-9"><h6><%= context.detalleFactura %></h6></td>
+                                      <td class="col-md-3"><h6><i class="fas fa-dollar-sign" area-hidden="true"></i> <%= context.importe %> </h6></td>
+                                  </tr>
+
+                                  <tr style="color: #3d3d3d;">
+                                      <td class="text-right"><h4><strong>Total:</strong></h4></td>
+                                      <td class="text-left"><h4><strong><i class="fas fa-dollar-sign" area-hidden="true"></i> <%= context.importe %> </strong></h4></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <div>
+                          <div class="col-md-12">
+                              <p>Fecha:  <strong><%= context.fecha %></strong></p>
+                              <br />
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <button class="btn btn-primary noPrint" onclick=window.print()>Imprimir!</button>
+      <button class="btn btn-primary noPrint" onclick=GoToHomePage()>Volver!</button>
+      </div>      
+  <!-- JavaScript Bundle with Popper -->
+    <script>
+        function GoToHomePage()
+            {
+            window.location = '/';   
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>

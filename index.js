@@ -23,7 +23,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const mongoURI = require('./config/mongoKEY');
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, },).then(() => console.log("Connected !"),);
+// mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, },).then(() => console.log("Connected !"),);
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, 
+                            useUnifiedTopology: true,
+                            useFindAndModify: false, 
+                            useCreateIndex: true, })
+    .then(() => console.log("Successfully connected to MongoDB"))
+    .catch(err => console.log("err No pude conectar con la DB de usuarios"));
 
 app.use(cookieParser('random'));
 app.use(csrf({ cookie: true }));
