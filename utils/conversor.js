@@ -1,7 +1,7 @@
 'use strict'
 
 
-module.exports = { tipoDoc, tipoRecibo, fechaConv, fechaConvB }
+module.exports = { tipoDoc, tipoRecibo, fechaConvA, fechaConvB }
 
 function tipoDoc (tipo) {
   let tipoDe = tipo
@@ -36,7 +36,7 @@ function tipoRecibo (tipo) {
   return tipoRec[tipoDe]
 }
 
-function fechaConv (fecha) {
+function fechaConvA (fecha) {
   // console.log('esta es la fecha ' + fecha)
   let annio = parseInt(fecha.substring(0, 4));
   let mes = parseInt(fecha.substring(4, 6)) - 1;
@@ -45,9 +45,9 @@ function fechaConv (fecha) {
   // console.log('esta es el mes ' + mes)
   // console.log('esta es el dia ' + dia)
   // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
   const convert = new Date(Date.UTC(annio, mes, dia )).toLocaleDateString('es-AR', options)
-  console.log('la fecha ' + convert)
+  console.log('la fecha A ' + convert)
   return convert
 }
 
@@ -60,9 +60,9 @@ function fechaConvB (fecha) {
   // console.log('esta es el mes ' + mes)
   // console.log('esta es el dia ' + dia)
   // const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
   const convert = new Date(Date.UTC(annio, mes, dia )).toLocaleDateString('es-AR', options)
-  console.log('la fecha ' + convert)
+  // console.log('la fecha B ' + convert)
   return convert
 }
 

@@ -105,6 +105,11 @@
       </div>
       <div class="row mb-4">
         <div class="col">
+          <input type="text" class="form-control" id="domicilio" name="domicilio" placeholder="Domicilio">
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
         <select class="form-control" id="nivel" name="nivel" onchange="cambia_division()">
           <option value="0" selected>Elija Nivel Educativo</option>
             <option value="1">Inicial</option>
@@ -144,6 +149,32 @@
               <option value="1" disabled>Productos</option>
               <option value="3" disabled>Productos y Servicios</option>
             </select>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col">
+        <select class="form-control" id="condIVA" name="condIVA">
+          <option value="0" selected>Condición Frente al IVA</option>
+            <option value="Consumidor Final">Consumidor Final</option>
+            <option value="IVA Responsable Inscripto">IVA Responsable Inscripto</option>
+            <option value="IVA Responsable no Inscripto">IVA Responsable no Inscripto</option>
+            <option value="IVA no Responsable">IVA no Responsable</option>
+            <option value="IVA Sujeto Exento">IVA Sujeto Exento</option>
+            <option value="Responsable Monotributo">Responsable Monotributo</option>
+            <option value="Pequeño Contribuyente Eventual">Pequeño Contribuyente Eventual</option>
+            <option value="Monotributista Social">Monotributista Social</option>
+            <option value="Pequeño Contribuyente Eventual Social">Pequeño Contribuyente Eventual Social</option>
+        </select>
+        </div>
+        <div class="col">
+          <select class="form-control" id="condVenta" name="condVenta">
+            <option value="0" selected>Condición de la Venta</option>
+              <option value="Contado">Contado</option>
+              <option value="Transferencia">Transferencia</option>
+              <option value="Tarjeta de crédito">Tarjeta de crédito</option>
+              <option value="Tarjeta de débito">Tarjeta de débito</option>
+              <option value="Cheque">Cheque</option>
+          </select>
         </div>
       </div>
       <div class="row mb-4">

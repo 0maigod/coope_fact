@@ -20,13 +20,15 @@
           <span class="home-text005">
             <span>ASOC. COOPERADORA MARIANO ACOSTA</span>
           </span>
+          <div class="break"></div> <!-- break -->
           <span class="home-text007">
             <span>Domicilio Comercial:</span>
             <span></span>
           </span>
           <span class="home-text010">
-            <span>Alberdi Juan Bautista Av. 654 - C.A.B,A,</span>
+            <span>Urquiza 175 - C.A.B.A.</span>
           </span>
+          <div class="break"></div> <!-- break -->
           <span class="home-text012">
             <span>Condición frente al IVA:</span>
             <span></span>
@@ -37,13 +39,13 @@
       <div class="home-container04">
         <div class="home-container05">
           <span class="home-text017">C</span>
-          <span class="home-text018"><span>COD. 15</span></span>
+          <span class="home-text018"><span>COD. <%= context.tipoFactura %></span></span>
         </div>
         <div class="home-container06"></div>
       </div>
       <div class="home-container01">
         <div class="home-container08">
-          <span class="home-text020">RECIBO</span>
+          <span class="home-text020"><%= context.tipoFacturaL %></span>
         </div>
         <div class="home-container09">
           <div class="home-container10">
@@ -62,24 +64,27 @@
                 <span></span>
               </span>
               <span class="home-text029">
-                <span class="home-text030">00003108</span>
+                <span class="home-text030"><%= context.voucherNumber %></span>
               </span>
             </div>
+            <div class="break"></div> <!-- break -->
             <div class="home-container13">
               <span class="home-text031"><span>Fecha de emisión:</span></span>
-              <span class="home-text033"><span>20/04/2022</span></span>
+              <span class="home-text033"><span><%= context.fecha %></span></span>
             </div>
           </div>
           <div class="home-container14">
             <span class="home-text035"><span>CUIT:</span></span>
-            <span class="home-text075"><span>33611473759</span></span>
+            <span class="home-text075"><span>30-67599224-6</span></span>
+            <div class="break"></div> <!-- break -->
             <span class="home-text039"><span>Ingresos Brutos:</span></span>
             <span class="home-text041"><span>Exento</span></span>
+            <div class="break"></div> <!-- break -->
             <span class="home-text043">
               <span class="home-text044">Fecha de Inicio de Actividades:</span>
               <span></span>
             </span>
-            <span class="home-text046"><span>13/11/1987</span></span>
+            <span class="home-text046"><span>xx/xx/xxxx</span></span>
           </div>
         </div>
       </div>
@@ -90,46 +95,47 @@
           <span>Período Facturado Desde:</span>
           <span></span>
         </span>
-        <span class="home-text051"><span>29/06/2022</span></span>
+        <span class="home-text051"><span><%= context.fecha %></span></span>
       </div>
       <div class="home-container16">
         <span class="home-text053"><span>Hasta:</span></span>
-        <span class="home-text055"><span>29/06/2022</span></span>
+        <span class="home-text055"><span><%= context.fecha %></span></span>
       </div>
       <div class="home-container17">
         <span class="home-text057">
           <span class="home-text058">Fecha de Vto. para el pago:</span>
         </span>
         <span class="home-text059">
-          <span class="home-text060">29/06/2022</span>
+          <span class="home-text060"><%= context.fecha %></span>
         </span>
       </div>
     </div>
     <div class="home-datossocio">
       <div class="home-container18">
         <span class="home-text061">
-          <span class="home-text062">CUIT:</span>
+          <span class="home-text062"><%= context.tipoDocumento %>:</span>
         </span>
-        <span class="home-text075"><span>20230086568</span></span>
+        <span class="home-text075"><span><%= context.doc_numero %></span></span>
+        <div class="break"></div> <!-- break -->
         <span class="home-text065">
           <span class="home-text066">Condición frente al IVA:</span>
         </span>
-        <span class="home-text075"><span>Consumidor Final</span></span>
+        <span class="home-text075"><span><%= context.condIVA %></span></span>
+        <div class="break"></div> <!-- break -->
         <span class="home-text069"><span>Condición de venta :</span></span>
-        <span class="home-text075"><span>Contado</span></span>
+        <span class="home-text075"><span><%= context.condVenta %></span></span>
       </div>
       <div class="home-container19">
         <span class="home-text073">
           <span class="home-text074">Apellido y Nombre / Razón social:</span>
         </span>
-        <span class="home-text075"><span>PULIDO HERNAN PABLO</span></span>
+        <span class="home-text075"><span><%= context.nombre %> <%= context.apellido %></span></span>
+        <div class="break"></div> <!-- break -->
         <span class="home-text077">
           <span class="home-text078">Domicilio Comercial:</span>
         </span>
         <span class="home-text079">
-          <span>Bocayuva Quintino 1124 - Ciudad de Buenos</span>
-          <br />
-          <span>Aires</span>
+          <span><%= context.domicilio %></span>
         </span>
       </div>
     </div>
@@ -138,17 +144,15 @@
       <div class="home-container20">
         <span class="home-text082"><span>Recibi(mos) la suma de:</span></span>
         <span class="home-text084"><span>$</span></span>
-        <span class="home-text086"><span>6789,46</span></span>
+        <span class="home-text086"><span><%= context.importe %></span></span>
       </div>
+      <div class="break"></div> <!-- break -->
       <div class="home-container21">
         <span class="home-text088"><span>en concepto de:</span></span>
         <span class="home-text090">
           <span>
-            Pago de Cuota Comedor por el período Abril Sin Beca del alumno/a
-            Ezequiel Pulido de la
+            <%= context.detalleFactura %>
           </span>
-          <br />
-          <span>sala/grado/año 3ºB en la fecha 04/04/2022</span>
         </span>
       </div>
     </div>
@@ -168,11 +172,11 @@
         <span class="home-text106"><span>Importe Total: $</span></span>
       </div>
       <div class="home-container24">
-        <span class="home-text108"><span>6789,46</span></span>
+        <span class="home-text108"><span><%= context.importe %></span></span>
         <span class="home-text110"><span>0,00</span></span>
-        <span class="home-text112"><span>6789,46</span></span>
+        <span class="home-text112"><span><%= context.importe %></span></span>
         <span class="home-text114"><span>0,00</span></span>
-        <span class="home-text116"><span>6789,46</span></span>
+        <span class="home-text116"><span><%= context.importe %></span></span>
       </div>
     </div>
     <div class="home-cae">
@@ -193,8 +197,8 @@
         <span class="home-text120"><span>Fecha de Vto. de CAE:</span></span>
       </div>
       <div class="home-container27">
-        <span class="home-text122"><span>72189647952700</span></span>
-        <span class="home-text124"><span>30/04/2022</span></span>
+        <span class="home-text122"><span><%= context.CAE %></span></span>
+        <span class="home-text124"><span><%= context.CAEFchVto %></span></span>
       </div>
     </div>
     <div class="home-pie">
@@ -206,3 +210,4 @@
     <div class="home-espacioabajo"></div>
   </div>
 </div>
+

@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { tipoDoc, tipoRecibo, fechaConv, fechaConvB } = require('../utils/conversor')
+const { tipoDoc, tipoRecibo, fechaConvA, fechaConvB } = require('../utils/conversor')
 const Afip = require('@afipsdk/afip.js');
 
 const controller = {};
@@ -55,7 +55,14 @@ controller.factura_save = async (req, res) => {
     };
     try {
         const respuesta = await afip.ElectronicBilling.createNextVoucher(data);
-        req.session.context = Object.assign(req.body , respuesta, {fecha:date});
+        req.session.context = Object.assign(
+            req.body, 
+            respuesta, 
+            {fecha:fechaConvB(date)}, 
+            {tipoFacturaL:tipoRecibo(req.body.tipoFactura)},
+            {CAEFchVto:fechaConvB(respuesta.CAEFchVto)}
+            );
+        console.log(req.session.context);
         res.redirect('recibo', 200, { csrfToken: req.csrfToken() });
       }
       catch(e) {
@@ -69,8 +76,8 @@ controller.factura_save = async (req, res) => {
 controller.factura_recibo = (req, res, next) => {
     let context = req.session.context;
     context.tipoDocumento = tipoDoc(context.tipoDocumento)
-    context.tipoFactura = tipoRecibo(context.tipoFactura)
-    context.fecha = fechaConvB(context.fecha)
+    context.tipoFacturaL = tipoRecibo(context.tipoFactura)
+    // context.fecha = fechaConvB(context.fecha)
     // console.log("Factura recien Hecha "+JSON.stringify(context));
     res.render('recibo', { csrfToken: req.csrfToken(), context: context });
 }
@@ -84,9 +91,10 @@ controller.factura_anteriores = async (req, res, next) => {
     try {
         const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroFactura,1,11); //Devuelve la información del comprobante "numeroFactura" para el punto de venta 1 y el tipo de comprobante 11 (Factura C)
         voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
-        voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
-        voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
+        // voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
+        voucherInfo.CbteTipoL = tipoRecibo(voucherInfo.CbteTipo)
         req.session.context = Object.assign(voucherInfo);
+        console.log(req.session.context);
         // console.log("Factura Pedida "+JSON.stringify(voucherInfo));
         res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
       }
@@ -100,7 +108,7 @@ controller.factura_anteriores = async (req, res, next) => {
 controller.fac_pedidofactura = (req, res, next) => {
     let context = req.session.context;
     // console.log(JSON.stringify(context));
-    res.render('pedido_recibo', { csrfToken: req.csrfToken(), context: context });
+    res.render('recibo', { csrfToken: req.csrfToken(), context: context });
 }
 
 controller.recibo_anteriores = async (req, res, next) => {
@@ -109,8 +117,8 @@ controller.recibo_anteriores = async (req, res, next) => {
         const voucherInfo = await afip.ElectronicBilling.getVoucherInfo(numeroRecibo,1,15); //Devuelve la información del comprobante "numeroRecibo" para el punto de venta 1 y el tipo de comprobante 15 (Recibo C)
 
         voucherInfo.DocTipo = tipoDoc(voucherInfo.DocTipo)
-        voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
-        voucherInfo.CbteTipo = tipoRecibo(voucherInfo.CbteTipo)
+        // voucherInfo.CbteFch = fechaConv(voucherInfo.CbteFch)
+        voucherInfo.CbteTipoL = tipoRecibo(voucherInfo.CbteTipo)
         req.session.context = Object.assign(voucherInfo);
         res.redirect('ped_recibo', 200, { csrfToken: req.csrfToken() });
       }

@@ -1,5 +1,7 @@
 -   COSAS A ARREGLAR O A AVERIGUAR
 
-- ver el tratamiento de errores (que no cuelgue y me dirija a otra pagina)
-- si el cuit no existe crashea la aplicacion
 - mandarle mail al administrador.
+- hacer el modulo de recibos anteriores.
+- sumarle una base de datos
+- que al loguearse se guarde la fecha hora e identidad del usuario.
+- en la base de datos sumarle el usuario que hace la factura.

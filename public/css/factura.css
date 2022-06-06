@@ -1,8 +1,12 @@
 html *
 {
-   font-size: 1.2em;
+   font-size: 1em;
    color: #000;
    font-family: Arial;
+}
+.break {
+  width: 100%;
+  height: 0;
 }
 .home-container {
   width: 1200px;
@@ -18,16 +22,13 @@ html *
 }
 .home-espacioarriba {
   width: 100%;
-  height: 38px;
+  height: 2em;
   display: flex;
   align-items: flex-start;
-  border-color: rgba(120, 120, 120, 0.4);
-  border-style: dashed;
-  border-width: 0px;
 }
 .home-titulo {
-  width: 1100px;
-  height: 50px;
+  width: 90%;
+  height: 3em;
   display: flex;
   align-items: center;
   border-color: #080808;
@@ -39,8 +40,8 @@ html *
   border-bottom-width: 0px;
 }
 .home-titulo-text {
-  width: var(--dl-size-size-large);
-  height: 25px;
+  width: 100%;
+  height: 1em;
   font-size: 25px;
   align-self: center;
   font-style: normal;
@@ -48,8 +49,8 @@ html *
   font-weight: 700;
 }
 .home-datoscoope {
-  width: 1100PX;
-  height: 320px;
+  width: 90%;
+  height: 20em;
   display: flex;
   align-items: center;
   border-color: #080808;
@@ -60,8 +61,9 @@ html *
   justify-content: center;
 }
 .home-fechas {
-  width: 1100px;
-  height: 50px;
+  width: 90%;
+  height: 3em;
+  font-size: 18px !important;
   display: flex;
   margin-top: 0.5em;
   align-items: center;
@@ -73,7 +75,7 @@ html *
   justify-content: space-between;
 }
 .home-datossocio {
-  width: 1100px;
+  width: 90%;
   height: 133px;
   display: flex;
   margin-top: 0.5em;
@@ -83,6 +85,53 @@ html *
   border-width: 2px;
   padding-left: 1em;
   padding-right: 1em;
+}
+.home-datosfactura {
+  width: 90%;
+  height: 746px;
+  display: flex;
+  margin-top: 0.5em;
+  align-items: flex-start;
+  border-color: #060606;
+  border-style: solid;
+  border-width: 0px;
+  padding-left: 1em;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.home-totales {
+  width: 90%;
+  height: 169px;
+  display: flex;
+  margin-top: 0.5em;
+  align-items: flex-start;
+  border-color: #060606;
+  border-style: solid;
+  border-width: 2px;
+  padding-left: 1em;
+  padding-right: 1em;
+  justify-content: flex-end;
+}
+.home-cae {
+  width: 90%;
+  height: 160px;
+  display: flex;
+  margin-top: 0.5em;
+  align-items: flex-end;
+  border-color: #060606;
+  border-style: solid;
+  border-width: 0px;
+  padding-left: 1em;
+  padding-right: 1em;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.home-pie {
+  width: 70%;
+  height: 38px;
+  display: flex;
+  align-items: flex-start;
 }
 .home-container01 {
   flex: 0 0 auto;
@@ -125,6 +174,7 @@ html *
   font-weight: 600;
 }
 .home-text005 {
+  font-size: 18px;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -139,6 +189,7 @@ html *
   font-weight: 600;
 }
 .home-text010 {
+  font-size: 18px;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -152,6 +203,7 @@ html *
   font-weight: 600;
 }
 .home-text015 {
+  font-size: 18px;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -237,7 +289,7 @@ html *
   justify-content: flex-start;
 }
 .home-container14 {
-  width: 65%;
+  width: 75%;
   height: 103px;
   display: flex;
   flex-wrap: wrap;
@@ -252,6 +304,7 @@ html *
   align-items: flex-start;
 }
 .home-text021 {
+  font-size: 18px;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -269,6 +322,7 @@ html *
   margin-left: 1em;
 }
 .home-text025 {
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
 }
@@ -289,10 +343,12 @@ html *
   font-weight: 600;
 }
 .home-text027 {
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
 }
 .home-text029 {
+  font-size: 18px;
   height: 24px;
   align-self: flex-end;
   font-style: normal;
@@ -310,28 +366,33 @@ html *
   justify-content: flex-start;
 }
 .home-text031 {
+  font-size: 18px;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
 }
 .home-text033 {
+  font-size: 18px;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
   margin-left: 1em;
 }
 .home-text035 {
+  font-size: 18px;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
 }
 
 .home-text039 {
+  font-size: 18px;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
 }
 .home-text041 {
+  font-size: 18px;
   align-self: stretch;
   font-style: normal;
   font-weight: 600;
@@ -344,10 +405,12 @@ html *
   font-weight: 600;
 }
 .home-text044 {
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
 }
 .home-text046 {
+  font-size: 18px;
   align-self: stretch;
   font-style: normal;
   font-weight: 400;
@@ -356,7 +419,7 @@ html *
 
 .home-container15 {
   flex: 0 0 auto;
-  width: 375px;
+  width: 40%;
   display: flex;
   flex-wrap: wrap;
   align-self: center;
@@ -364,7 +427,6 @@ html *
   flex-direction: row;
 }
 .home-text048 {
-  font-size: 22px;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
@@ -378,7 +440,7 @@ html *
 }
 .home-container16 {
   flex: 0 0 auto;
-  width: 284px;
+  width: 20%;
   display: flex;
   flex-wrap: wrap;
   align-self: center;
@@ -387,7 +449,6 @@ html *
   justify-content: center;
 }
 .home-text053 {
-  font-size: 22px;
   align-self: center;
   font-style: normal;
   text-align: center;
@@ -403,11 +464,11 @@ html *
 }
 .home-container17 {
   flex: 0 0 auto;
-  width: 402px;
+  width: 40%;
   display: flex;
   align-self: center;
   align-items: stretch;
-  padding-right: var(--dl-space-space-twounits);
+  padding-right: 2em;
   flex-direction: row;
   justify-content: flex-end;
 }
@@ -416,7 +477,6 @@ html *
   text-align: right;
 }
 .home-text058 {
-  font-size: 22px;
   font-style: normal;
   font-weight: 600;
 }
@@ -431,7 +491,7 @@ html *
   font-weight: 600;
 }
 .home-container18 {
-  width: 36%;
+  width: 38%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -479,9 +539,9 @@ html *
 .home-text075 {
   align-self: flex-start;
   font-style: normal;
+  font-size: 18px;
   font-weight: 400;
   margin-left: 1em;
-  margin-right: 6em;
 }
 .home-text077 {
   align-self: flex-start;
@@ -498,7 +558,7 @@ html *
   margin-right: 6em;
 }
 .home-espaciomedio {
-  width: 1100px;
+  width: 90%;
   height: 50px;
   display: flex;
   margin-top: 0.5em;
@@ -510,21 +570,8 @@ html *
   padding-right: 1em;
   justify-content: space-between;
 }
-.home-datosfactura {
-  width: 1100px;
-  height: 746px;
-  display: flex;
-  margin-top: 0.5em;
-  align-items: flex-start;
-  border-color: #060606;
-  border-style: solid;
-  border-width: 0px;
-  padding-left: 1em;
-  flex-direction: column;
-  justify-content: flex-start;
-}
 .home-container20 {
-  width: 1079px;
+  width: 100%;
   height: 48px;
   display: flex;
   flex-wrap: wrap;
@@ -534,6 +581,7 @@ html *
   justify-content: flex-start;
 }
 .home-text082 {
+  font-size: 20px;
   align-self: center;
   font-style: normal;
   font-weight: 600;
@@ -565,6 +613,7 @@ html *
   justify-content: flex-start;
 }
 .home-text088 {
+  font-size: 20px;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
@@ -575,19 +624,6 @@ html *
   font-style: normal;
   font-weight: 400;
   margin-left: 1em;
-}
-.home-totales {
-  width: 1100px;
-  height: 169px;
-  display: flex;
-  margin-top: 0.5em;
-  align-items: flex-start;
-  border-color: #060606;
-  border-style: solid;
-  border-width: 2px;
-  padding-left: 1em;
-  padding-right: 1em;
-  justify-content: flex-end;
 }
 .home-container22 {
   width: 142px;
@@ -691,20 +727,6 @@ html *
   margin-top: 0.5em;
   font-weight: 600;
 }
-.home-cae {
-  width: 1100px;
-  height: 160px;
-  display: flex;
-  margin-top: 0.5em;
-  align-items: flex-end;
-  border-color: #060606;
-  border-style: solid;
-  border-width: 0px;
-  padding-left: 1em;
-  padding-right: 1em;
-  flex-direction: row;
-  justify-content: flex-end;
-}
 .home-container25 {
   width: 663px;
   height: 100%;
@@ -770,12 +792,6 @@ html *
   font-style: normal;
   margin-top: 0.5em;
   font-weight: 400;
-}
-.home-pie {
-  width: 820px;
-  height: 38px;
-  display: flex;
-  align-items: flex-start;
 }
 .home-text126 {
   font-style: italic;
