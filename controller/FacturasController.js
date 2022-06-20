@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { tipoDoc, tipoRecibo, fechaConvA, fechaConvB } = require('../utils/conversor')
+const { tipoDoc, tipoRecibo, fechaConvA, fechaConvB, tipoNivel } = require('../utils/conversor')
 const Afip = require('@afipsdk/afip.js');
 
 const controller = {};
@@ -58,6 +58,8 @@ controller.factura_save = async (req, res) => {
         req.session.context = Object.assign(
             req.body, 
             respuesta, 
+            {tipoDocumentoL:tipoDoc(req.body.tipoDocumento)},
+            {nivel:tipoNivel(req.body.nivel)},
             {fecha:fechaConvB(date)}, 
             {tipoFacturaL:tipoRecibo(req.body.tipoFactura)},
             {CAEFchVto:fechaConvB(respuesta.CAEFchVto)}

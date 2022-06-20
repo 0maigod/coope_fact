@@ -1,7 +1,7 @@
 'use strict'
 
 
-module.exports = { tipoDoc, tipoRecibo, fechaConvA, fechaConvB }
+module.exports = { tipoDoc, tipoRecibo, fechaConvA, fechaConvB, tipoNivel }
 
 function tipoDoc (tipo) {
   let tipoDe = tipo
@@ -34,6 +34,22 @@ function tipoRecibo (tipo) {
         15 : "Recibo",
     };
   return tipoRec[tipoDe]
+}
+
+function tipoNivel (tipo) {
+  let tipoDe = tipo
+  if (typeof tipoDe !== 'number') {
+    tipoDe = parseInt(tipo)
+    // throw new TypeError('el tipo de documento debe ser un numero')
+  }
+    const tipoNiv = {
+        1 : "Inicial",
+        2 : "Primaria",
+        3 : "Secundaria",
+        4 : "PEP",
+        5 : "IES",
+    };
+  return tipoNiv[tipoDe]
 }
 
 function fechaConvA (fecha) {

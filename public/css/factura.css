@@ -9,9 +9,9 @@ html *
   height: 0;
 }
 .home-container {
-  width: 1200px;
+  width: 1000px;
   display: flex;
-  overflow: auto;
+  /* overflow: auto;  */
   min-height: 100vh;
   align-items: center;
   border-color: #080808;
@@ -62,8 +62,8 @@ html *
 }
 .home-fechas {
   width: 90%;
-  height: 3em;
-  font-size: 18px !important;
+  height: 4em;
+  font-size: 1.1em !important;
   display: flex;
   margin-top: 0.5em;
   align-items: center;
@@ -72,11 +72,12 @@ html *
   border-width: 2px;
   padding-left: 1em;
   padding-right: 1em;
+  padding-top: 0.5em;
   justify-content: space-between;
 }
 .home-datossocio {
   width: 90%;
-  height: 133px;
+  height: 9em;
   display: flex;
   margin-top: 0.5em;
   align-items: flex-start;
@@ -88,7 +89,7 @@ html *
 }
 .home-datosfactura {
   width: 90%;
-  height: 400px;
+  height: 15em;
   display: flex;
   margin-top: 0.5em;
   align-items: flex-start;
@@ -102,7 +103,7 @@ html *
 
 .home-totales {
   width: 90%;
-  height: 169px;
+  height: 11em;
   display: flex;
   margin-top: 0.5em;
   align-items: flex-start;
@@ -115,7 +116,7 @@ html *
 }
 .home-cae {
   width: 90%;
-  height: 160px;
+  height: 10em;
   display: flex;
   margin-top: 0.5em;
   align-items: flex-end;
@@ -129,13 +130,13 @@ html *
 }
 .home-pie {
   width: 70%;
-  height: 38px;
+  height: 2em;
   display: flex;
   align-items: flex-start;
 }
 .home-container01 {
   flex: 0 0 auto;
-  width: 500px;
+  width: 45%;
   height: 100%;
   display: flex;
   align-items: flex-start;
@@ -153,7 +154,7 @@ html *
   justify-content: center;
 }
 .home-text001 {
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   text-align: center;
   font-weight: 700;
@@ -174,7 +175,7 @@ html *
   font-weight: 600;
 }
 .home-text005 {
-  font-size: 18px;
+  font-size: 1em;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -189,7 +190,7 @@ html *
   font-weight: 600;
 }
 .home-text010 {
-  font-size: 18px;
+  font-size: 1em;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -203,7 +204,7 @@ html *
   font-weight: 600;
 }
 .home-text015 {
-  font-size: 18px;
+  font-size: 1em;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -212,7 +213,7 @@ html *
 }
 .home-container04 {
   flex: 0 0 auto;
-  width: 100px;
+  width: 10%;
   height: auto;
   display: flex;
   align-items: center;
@@ -260,20 +261,21 @@ html *
 }
 .home-container08 {
   width: 100%;
-  height: 54px;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 .home-text020 {
-  font-size: 40px;
+  font-size: 30px;
   font-style: normal;
   text-align: center;
+  text-transform: uppercase;
   font-weight: 700;
 }
 .home-container09 {
   width: 100%;
-  height: 239px;
+  height: 80%;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -297,32 +299,30 @@ html *
   justify-content: flex-start;
 }
 .home-container11 {
-  width: 50%;
+  width: 55%;
   height: 24px;
   display: flex;
   align-self: flex-start;
   align-items: flex-start;
 }
 .home-text021 {
-  font-size: 18px;
-  height: 24px;
+  font-size: 1em;
+  /* height: 24px; */
   align-self: stretch;
   font-style: normal;
   font-weight: 600;
 }
-.home-text022 {
-  font-style: normal;
-  font-weight: 600;
-}
+
 .home-text024 {
-  font-size: 18px;
-  height: 24px;
+  font-size: 1em;
+  /* height: 24px; */
   align-self: stretch;
   font-style: normal;
   font-weight: 600;
   margin-left: 1em;
 }
 .home-container12 {
+  margin-left: 1em;
   height: 24px;
   display: flex;
   align-items: flex-end;
@@ -336,12 +336,12 @@ html *
   font-weight: 600;
 }
 .home-text027 {
-  font-size: 18px;
+  font-size: 1em;
   font-style: normal;
   font-weight: 700;
 }
 .home-text029 {
-  font-size: 18px;
+  font-size: 1em;
   height: 24px;
   align-self: stretch;
   font-style: normal;
@@ -360,13 +360,13 @@ html *
 }
 .home-text031 {
   margin-top:0.5em;
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
 }
 .home-text033 {
-  font-size: 18px;
+  font-size: 1em;
   margin-top:0.5em;
   align-self: flex-start;
   font-style: normal;
@@ -374,20 +374,20 @@ html *
   margin-left: 1em;
 }
 .home-text035 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
 }
 
 .home-text039 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-start;
   font-style: normal;
   font-weight: 600;
 }
 .home-text041 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: stretch;
   font-style: normal;
   font-weight: 600;
@@ -400,12 +400,12 @@ html *
   font-weight: 600;
 }
 .home-text044 {
-  font-size: 18px;
+  font-size: 1em;
   font-style: normal;
   font-weight: 600;
 }
 .home-text046 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: stretch;
   font-style: normal;
   font-weight: 400;
@@ -414,12 +414,13 @@ html *
 
 .home-container15 {
   flex: 0 0 auto;
-  width: 40%;
+  width: 30%;
   display: flex;
   flex-wrap: wrap;
   align-self: center;
   align-items: stretch;
   flex-direction: row;
+  justify-content: center;
 }
 .home-text048 {
   align-self: flex-start;
@@ -427,7 +428,7 @@ html *
   font-weight: 600;
 }
 .home-text051 {
-  font-size: 22px;
+  font-size: 1.4em;
   align-self: flex-start;
   font-style: normal;
   font-weight: 400;
@@ -435,7 +436,7 @@ html *
 }
 .home-container16 {
   flex: 0 0 auto;
-  width: 20%;
+  width: 15%;
   display: flex;
   flex-wrap: wrap;
   align-self: center;
@@ -450,22 +451,22 @@ html *
   font-weight: 600;
 }
 .home-text055 {
-  font-size: 22px;
+  font-size: 1.4em;
   align-self: center;
   font-style: normal;
   text-align: center;
   font-weight: 400;
-  margin-left: 1em;
+
 }
 .home-container17 {
   flex: 0 0 auto;
-  width: 40%;
+  width: 30%;
   display: flex;
+  flex-wrap: wrap;
   align-self: center;
   align-items: stretch;
-  padding-right: 2em;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .home-text057 {
   align-self: flex-end;
@@ -478,15 +479,12 @@ html *
 .home-text059 {
   align-self: flex-end;
   text-align: right;
-  margin-left: 1em;
-}
-.home-text060 {
-  font-size: 22px;
+  font-size: 1.4em;
   font-style: normal;
   font-weight: 600;
 }
 .home-container18 {
-  width: 38%;
+  width: 45%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -515,8 +513,8 @@ html *
   font-weight: 600;
 }
 .home-container19 {
-  width: 627px;
-  height: 104px;
+  width: 55%;
+  height: 67%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -534,7 +532,7 @@ html *
 .home-text075 {
   align-self: flex-start;
   font-style: normal;
-  font-size: 18px;
+  font-size: 1em;
   font-weight: 400;
   margin-left: 1em;
 }
@@ -554,7 +552,7 @@ html *
 }
 .home-espaciomedio {
   width: 90%;
-  height: 50px;
+  height: 3em;
   display: flex;
   margin-top: 0.5em;
   align-items: center;
@@ -677,7 +675,7 @@ html *
   font-weight: 600;
 }
 .home-text106 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-end;
   font-style: normal;
   margin-top: 0.5em;
@@ -716,14 +714,14 @@ html *
   font-weight: 600;
 }
 .home-text116 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-end;
   font-style: normal;
   margin-top: 0.5em;
   font-weight: 600;
 }
 .home-container25 {
-  width: 663px;
+  width: 60%;
   height: 100%;
   display: flex;
   align-items: flex-start;
@@ -744,7 +742,7 @@ html *
   margin-left: 1em;
 }
 .home-container26 {
-  width: 210px;
+  width: 25%;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -754,20 +752,20 @@ html *
   justify-content: flex-start;
 }
 .home-text118 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-end;
   font-style: normal;
   font-weight: 600;
 }
 .home-text120 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-end;
   font-style: normal;
   margin-top: 0.5em;
   font-weight: 600;
 }
 .home-container27 {
-  width: 182px;
+  width: 15%;
   height: 100%;
   display: flex;
   align-items: flex-end;
@@ -776,13 +774,13 @@ html *
   justify-content: flex-start;
 }
 .home-text122 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-start;
   font-style: normal;
   font-weight: 400;
 }
 .home-text124 {
-  font-size: 18px;
+  font-size: 1em;
   align-self: flex-start;
   font-style: normal;
   margin-top: 0.5em;
@@ -790,6 +788,7 @@ html *
 }
 .home-text126 {
   font-style: italic;
+  font-size: 0.9em;
   font-weight: 400;
 }
 .home-espacioabajo {
